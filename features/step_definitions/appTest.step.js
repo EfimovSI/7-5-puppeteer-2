@@ -24,22 +24,25 @@ Given('User is on {string} page', async (string) => {
   await this.page.goto(string);
 });
 
-When('User clicks on {int}-th button of calendar', async (int) => {
+When('User clicks button # {int} of calendar', async (int) => {
   await clickBySelector(this.page, `a:nth-child(${int})`);
 });
 
 When("User clicks on {int}-st movie seance's time button", async (int) => {
   await clickBySelector(this.page, '.movie-seances__time');
+  this.rowAndSeat = [];
 });
 
 When('User clicks on chosen {string}', async (string) => {
   await this.page.waitForSelector('.buying__info');
-  this.rowAndSeat = [];
   this.rowAndSeat.push(await chooseRandomSeat(this.page));
-  this.expectedRowAndSeat = getSeatFromDecimal(this.rowAndSeat);
 });
 
 When('User clicks on {string} button', async (string) => {
+  this.rowAndSeat.sort(function (a, b) {
+    return parseFloat(a) - parseFloat(b);
+  });
+  this.expectedRowAndSeat = getSeatFromDecimal(this.rowAndSeat);
   await clickBySelector(this.page, '.acceptin-button');
 });
 
