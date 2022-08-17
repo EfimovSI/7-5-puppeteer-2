@@ -14,7 +14,7 @@ afterEach(() => {
 });
 
 describe('App tests', () => {
-  test.only('Should buy ticket in 5 days advance', async () => {
+  test('Should buy ticket in 5 days advance', async () => {
     await clickBySelector(page, 'a:nth-child(6)');
     await clickBySelector(page, '.movie-seances__time');
     await page.waitForSelector('.buying__info');
@@ -57,7 +57,7 @@ describe('App tests', () => {
     expect(ticket).toEqual('Электронный билет');
   });
 
-  test('Should not let buy ticket without choosing a seat', async () => {
+  test.only('Should not let buy ticket without choosing a seat', async () => {
     await clickBySelector(page, 'a:nth-child(3)');
     await clickBySelector(page, '.movie-seances__time');
     await page.waitForSelector('.buying__info');

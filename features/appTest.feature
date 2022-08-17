@@ -26,4 +26,4 @@ Feature: Application tests
     Given User is on 'http://qamid.tmweb.ru/client/index.php' page
     When User clicks button # 3 of calendar
     And User clicks on 1-st movie seance's time button
-    Then Button "Забронировать" is 'disabled'
+    Then Button Забронировать is 'disabled'

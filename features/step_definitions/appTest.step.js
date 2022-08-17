@@ -59,3 +59,12 @@ Then('User get {string}', async (string) => {
   this.ticket = await this.page.$eval('h2', (el) => el.textContent);
   expect(this.ticket).equal('Электронный билет');
 });
+
+Then('Button Забронировать is {string}', async (string) => {
+  await this.page.waitForSelector('.buying__info');
+  this.isDisabled = await this.page.$eval('button', (element) =>
+    element.getAttribute('disabled')
+  );
+  console.log(this.isDisabled);
+  expect(this.isDisabled).equal('true');
+});
