@@ -62,8 +62,10 @@ Then('User get {string}', async (string) => {
 
 Then('Button Забронировать is {string}', async (string) => {
   await this.page.waitForSelector('.buying__info');
-  this.isDisabled = await this.page.$eval('button', (element) =>
-    element.getAttribute('disabled')
+  this.isDisabled = await this.page.$eval(
+    'button',
+    (element, string) => element.getAttribute(string),
+    string
   );
   expect(this.isDisabled).equal('true');
 });
