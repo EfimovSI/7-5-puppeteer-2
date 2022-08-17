@@ -65,6 +65,5 @@ Then('Button Забронировать is {string}', async (string) => {
   this.isDisabled = await this.page.$eval('button', (element) =>
     element.getAttribute('disabled')
   );
-  console.log(this.isDisabled);
   expect(this.isDisabled).equal('true');
 });
