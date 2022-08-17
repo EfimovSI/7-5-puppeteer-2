@@ -6,8 +6,8 @@ const { chooseRandomSeat, getSeatFromDecimal } = require('../../lib/utils');
 
 Before(async () => {
   const browser = await puppeteer.launch({
-    headless: false,
-    slowMo: 50
+    // headless: false,
+    // slowMo: 50
   });
   const page = await browser.newPage();
   this.browser = browser;

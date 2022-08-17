@@ -57,7 +57,7 @@ describe('App tests', () => {
     expect(ticket).toEqual('Электронный билет');
   });
 
-  test.only('Should not let buy ticket without choosing a seat', async () => {
+  test('Should not let buy ticket without choosing a seat', async () => {
     await clickBySelector(page, 'a:nth-child(3)');
     await clickBySelector(page, '.movie-seances__time');
     await page.waitForSelector('.buying__info');
