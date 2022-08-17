@@ -14,18 +14,18 @@ afterEach(() => {
 });
 
 describe('App tests', () => {
-  test('Should buy ticket in 5 days advance', async () => {
+  test.only('Should buy ticket in 5 days advance', async () => {
     await clickBySelector(page, 'a:nth-child(6)');
     await clickBySelector(page, '.movie-seances__time');
     await page.waitForSelector('.buying__info');
 
     let rowAndSeat = [];
     rowAndSeat.push(await chooseRandomSeat(page));
-    expectedRowAndSeat = getSeatFromDecimal(rowAndSeat);
+    const expectedRowAndSeat = getSeatFromDecimal(rowAndSeat);
 
     await clickBySelector(page, '.acceptin-button');
     const actualSeats = await getText(page, '.ticket__chairs');
-    await page.click('.acceptin-button');
+    await clickBySelector(page, '.acceptin-button');
     const ticket = await page.$eval('h2', (el) => el.textContent);
 
     expect(expectedRowAndSeat.join(', ')).toEqual(actualSeats);
